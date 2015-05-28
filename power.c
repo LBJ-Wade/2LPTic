@@ -181,14 +181,15 @@ void initialize_powerspectrum(void)
   res = TopHatSigma2(R8);
 
   if(ThisTask == 0 && WhichSpectrum == 2)
-    printf("\nNormalization of spectrum in file:  Sigma8 = %g\n", sqrt(res));
+    printf("\nNormalization of spectrum in file:  Sigma8 = %0.10f\n", sqrt(res));
 
   Norm = Sigma8 * Sigma8 / res;
 
   if(ThisTask == 0 && WhichSpectrum == 2)
-    printf("Normalization adjusted to  Sigma8=%g   (Normfac=%g)\n\n", Sigma8, Norm);
+	   printf("Normalization adjusted to  Sigma8=%0.10f   (Normfac=%0.10f)\n\n", Sigma8, Norm);
 
-  Dplus = GrowthFactor(InitTime, 1.0);
+  //Dplus = GrowthFactor(InitTime, 1.0);
+  //Dplus = 1;
 }
 
 double PowerSpec_Tabulated(double k)
@@ -307,7 +308,7 @@ double sigma2_int(double k)
   return x;
 }
 
-
+//************  Not called anymore *******************
 double GrowthFactor(double astart, double aend)
 {
   return growth(aend) / growth(astart);
@@ -329,24 +330,28 @@ double growth_int(double a)
   return pow(a / (Omega + (1 - Omega - OmegaLambda) * a + OmegaLambda * a * a * a), 1.5);
 }
 
+// *************************************************
 
+// the following are just one for my purpose
 double F_Omega(double a)
 {
-  double omega_a;
+  //double omega_a;
 
-  omega_a = Omega / (Omega + a * (1 - Omega - OmegaLambda) + a * a * a * OmegaLambda);
+  //omega_a = Omega / (Omega + a * (1 - Omega - OmegaLambda) + a * a * a * OmegaLambda);
 
-  return pow(omega_a, 0.6);
+  //return pow(omega_a, 0.6);
+	return 1.0;
 }
 
 
 double F2_Omega(double a)
 {
-  double omega_a;
+  //double omega_a;
 
-  omega_a = Omega / (Omega + a * (1 - Omega - OmegaLambda) + a * a * a * OmegaLambda);
+  //omega_a = Omega / (Omega + a * (1 - Omega - OmegaLambda) + a * a * a * OmegaLambda);
 
-  return 2 * pow(omega_a, 4./7.);
+  //return 2 * pow(omega_a, 4./7.);
+	return 2.0;
 }
 
 

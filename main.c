@@ -118,7 +118,7 @@ void displacement_fields(void)
     }
 
   hubble_a =
-    Hubble * sqrt(Omega / pow(InitTime, 3) + (1 - Omega - OmegaLambda) / pow(InitTime, 2) + OmegaLambda);
+    Hubble * HubbleNormInitTime;
 
   vel_prefac = InitTime * hubble_a * F_Omega(InitTime);
   vel_prefac2 = InitTime * hubble_a * F2_Omega(InitTime);
@@ -127,7 +127,7 @@ void displacement_fields(void)
   vel_prefac2 /= sqrt(InitTime);
 
   if(ThisTask == 0)
-    printf("vel_prefac= %g, vel_prefac2= %g,  hubble_a=%g fom=%g \n", vel_prefac, vel_prefac2, 
+    printf("vel_prefac= %0.10f, vel_prefac2= %0.10f,  hubble_a=%g fom=%0.10f \n", vel_prefac, vel_prefac2, 
                                                                       hubble_a, F_Omega(InitTime));
 
   fac = pow(2 * PI / Box, 1.5);
@@ -778,10 +778,13 @@ void print_spec(void)
 
       fd = fopen(buf, "w");
 
-      gf = GrowthFactor(0.001, 1.0) / (1.0 / 0.001);
+      //gf = GrowthFactor(0.001, 1.0) / (1.0 / 0.001);
 
-      DDD = GrowthFactor(1.0 / (Redshift + 1), 1.0);
+      //DDD = GrowthFactor(1.0 / (Redshift + 1), 1.0);
 
+	  gf = 1.0;
+	  DDD = Dplus;
+	  
       fprintf(fd, "%12g %12g\n", Redshift, DDD);	/* print actual starting redshift and 
 							   linear growth factor for this cosmology */
 

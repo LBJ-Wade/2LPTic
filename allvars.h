@@ -125,6 +125,7 @@ extern double PrimordialIndex;
 extern double ShapeGamma;
 
 extern double Dplus; /* growth factor */
+extern double HubbleNormInitTime;	/* Normalize Hubble rate at InitTime*/
 
 
 #ifdef DIFFERENT_TRANSFER_FUNC
@@ -134,3 +135,4 @@ extern int Type, MinType, MaxType;
 extern int    WDM_On;
 extern int    WDM_Vtherm_On;
 extern double WDM_PartMass_in_kev;
+

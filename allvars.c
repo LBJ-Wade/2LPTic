@@ -70,6 +70,8 @@ double OmegaBaryon, HubbleParam;
 double ShapeGamma;
 double PrimordialIndex;
 double Dplus;			/* growth factor */
+double HubbleNormInitTime;	/* Normalize Hubble rate at InitTime*/
+
 
 #ifdef DIFFERENT_TRANSFER_FUNC
 int Type, MinType, MaxType;

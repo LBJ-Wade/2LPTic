@@ -136,6 +136,14 @@ void read_parameterfile(char *fname)
   addr[nt] = &WDM_PartMass_in_kev;
   id[nt++] = FLOAT;
 
+  strcpy(tag[nt], "Dplus");
+  addr[nt] = &Dplus;
+  id[nt++] = FLOAT;
+
+  strcpy(tag[nt], "HubbleNormInitTime");
+  addr[nt] = &HubbleNormInitTime;
+  id[nt++] = FLOAT;
+
   if((fd = fopen(fname, "r")))
     {
       while(!feof(fd))
